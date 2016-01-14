@@ -9,6 +9,23 @@
 \usepackage{amssymb}
 \usepackage{epstopdf}
 \usepackage{amsmath}
+\usepackage{physics}
+
+\usepackage{textcomp}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\hypersetup{
+    pdftitle={Formule iz elektrodinamike},    % title
+    pdfauthor={Bukva Aleksandar},     % author
+    pdfsubject={Formule iz elektrodinamike},   % subject of the document
+    pdfcreator={pdftex},   % creator of the document
+    pdfproducer={Texmaker}, % producer of the document
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=red,          % color of internal links
+    citecolor=red,        % color of links to bibliography
+    filecolor=red,      % color of file links
+    urlcolor=red           % color of external links
+}
 
 \usepackage{multicol}
 
@@ -16,10 +33,10 @@
 
 \begin{document}
 
-
 \begin{center}
 \LARGE
-Formule za Elektrodinamiku
+Formule za elektrodinamiku \footnote{\textcopyleft \ 2016. From  \url{https://github.com/abukva/edformule}, last revised \today. This material 
+is provided as is without warranty or representation about the accuracy, correctness or suitability of the material for any purpose, and is licensed under the Creative Commons Attribution-Noncommercial-ShareAlike 3.0 United States License. To view a copy of this license, visit \url{http://creativecommons.org/licenses/by-nc-sa/3.0/} or send a letter to Creative Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA. }
 \end{center}
 \normalsize
 \begin{multicols}{3}
@@ -27,9 +44,150 @@ Formule za Elektrodinamiku
 \begin{footnotesize}
 
 \begin{equation}
-\rho(\vec{r}) = \sum_\alpha q_a \delta^{(3)}(\vec{r}-\vec{r_\alpha})
+\rho(\vb{r}) = \sum_\alpha q_a \delta^{(3)}(\vb{r}-\vb{r_\alpha})
 \end{equation}
 
+\begin{equation}
+\div\vec{j} + \frac{\partial \rho}{\partial t} = 0
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\vb{F} &= q(\vb{E} + \vb{v}\cross\vb{B}) \\
+\vb{F} &= \int \rho \dd[3]{r}(\vb{E} + \vb{v}\cross\vb{B}) \\
+&= \int (\rho\vb{E} + \vb{j}\cross\vb{B})\dd[3]{r}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\vb{p} = \int_V \rho(\vb{r}) \vb{r} \dd V
+\end{equation}
+
+\begin{equation}
+\phi = \frac{1}{4 \pi \epsilon_0} \int_V \frac{\rho(\vb{r\prime})}{|\vb{r}-\vb{r\prime}|}\dd V\prime
+\end{equation}
+
+\begin{equation}
+\phi = \frac{1}{4 \pi \epsilon_0} \left [\frac{Q}{r} + \frac{\vb{r}\cdot\vb{p}}{r^3} + \frac{x_i D_{ij}x_j}{2r^5} \right ]
+\end{equation}
+
+\begin{equation}
+\vb{E}(\vb{r}) = \frac{1}{4 \pi \epsilon_0} \int \frac{\rho(\vb{r}\prime)\dd[3]{r}\prime}{\abs{\vb{r}-\vb{r}\prime}}(\vb{r}-\vb{r}\prime)
+\end{equation}
+
+\begin{equation}
+\begin{split}
+&D_{ij} = \int \rho(\vb{r})(3x_ix_j-\delta_{ij}r^2)\dd V \\
+&D_{ij} = \sum_{\alpha} q_{\alpha} ( 3 x_i^{(\alpha)}x_j^{(\alpha)} - \delta_{ij}(r^{(\alpha)})^2); \quad \Tr\hat{D} =0
+\end{split}
+\end{equation}
+
+\begin{equation}
+\vb{E} = - \gradient \phi
+\end{equation}
+
+\begin{equation}
+\vb{j} = \rho \vb{v}
+\end{equation}
+
+\begin{equation}
+\vb{A}(\vb{r}) = \frac{\mu_0}{4\pi} \int \frac{\vb{j}(\vb{r\prime})}{|\vb{r}-\vb{r\prime}|}\dd V\prime
+\end{equation}
+
+\begin{equation}
+\vb{A}(\vb{r}) = \frac{\mu_0}{4\pi} \frac{\vb{m}\times\vb{r}}{r^3}
+\end{equation}
+
+\begin{equation}
+\vb{m}(\vb{r}) = \frac{1}{2} \int \vb{r} \times \vb{j}(\vb{r})\dd V
+\end{equation}
+
+\begin{equation}
+\vb{B}(\vb{r}) = \curl \vb{A} = \frac{\mu_0}{4\pi} \int \frac{\vb{j}(\vb{r\prime})\times (\vb{r}-\vb{r\prime})}{|\vb{r}-\vb{r\prime}|^3} \dd V\prime
+\end{equation}
+
+\begin{equation}
+\vb{E} = \pdv{\vb{A}}{t} - \gradient \phi
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\div{\vb{A}} + \frac{1}{c^2} \pdv{\phi}{t} &= 0 \\
+\laplacian{\phi} - \frac{1}{c^2} \pdv[2]{\phi}{t} &= -\frac{\rho}{\epsilon_0} \\
+\laplacian{\vb{A}} - \frac{1}{c^2} \pdv[2]{\vb{A}}{t} &= -\mu_0 \vb{j}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\expval{\rho} = \frac{1}{T} \int_0^T \rho dt 
+\end{equation}
+
+\begin{equation}
+\laplacian \phi - \frac{1}{c^2} \frac{\partial^2 \phi}{\partial t^2} = -\frac{1}{\epsilon_0}\rho
+\end{equation}
+
+\begin{equation}
+\laplacian \vb{A} - \frac{1}{c^2} \frac{\partial^2 \vb{A}}{\partial t^2} = -\mu_0 \vb{j}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+D_{2n} - D_{1n} &= \sigma \\
+B_{2n} - B_{1n} &= 0 \\
+P_{2n} - P_{1n} &= -\sigma_{vez} \\
+E_{2n} - E_{1n} &= \frac{1}{\epsilon_0} \sigma \\
+E_{2t} - E_{1t} &= 0 \\
+\vb{n}\times (\vb{H}_2 - \vb{H}_1) &= \vb{i} \\
+M_{2t} - M_{1t} &= \vb{i}_{vez} \times \vb{n}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\div\vec{E} &= \frac{\rho}{\epsilon_0} \\
+\div\vec{B} &= 0 \\
+\curl \vb{E} &= -\frac{\partial\vb{B}}{\partial t} \\
+\curl \vb{B} &= \mu_0 \left( \vb{j} + \epsilon_0 \frac{\partial\vb{E}}{\partial t} \right)
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\div\vec{D} &= \rho + \rho_{ext} \\
+\div\vec{B} &= 0 \\
+\curl \vb{E} &= - \frac{\partial B}{\partial t} \\
+\curl \vb{H} &= \vb{j} + \vb{j}_{ext} + \frac{\partial D}{\partial t}
+\end{split}
+\end{equation}
+
+\begin{equation}
+q = U C = U \epsilon_0 \frac{S}{d}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+&\frac{d}{dt} \left( \sum_n \varepsilon_n + \underbrace{\int_V \dd[3]{r} \left( \frac{1}{2} \vb{D}\vdot\vb{E} + \frac{1}{2}\vb{H}\vdot\vb{B} \right)}_{W_{em}} \right) \\ &= -\oint_{\partial S} \vb{S}_p d\vb{S} \\
+&\dv{t} (\sum_n \varepsilon_n ) = \int \dd[3]{r}\vb{j}\vdot\vb{E}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\vb{S}_p &= \vb{E}\cross\vb{H} \\
+\vb{g} &= \frac{\vb{S}_p}{c^2} \quad \text{- gustina impulsa}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\vb{L} = \int \vb{r} \times \vb{g} \dd V
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\frac{d}{dt}\left[\sum_{\alpha} \vb{p}_{\alpha} + \int \dd[3]{r} (\vb{D} \times \vb{B}) \right] \\ - \frac{1}{2•}\int \dd[3]{r}(\epsilon_0 \vb{E}^2 \gradient \epsilon_r + \mu_0\vb{H}^2 \gradient \mu_r) = \oint_S \hat{T}d\vb{S} \\
+\hat{T} = \vb{\ket{E}}\vb{\bra{D}} + \vb{\ket{B}}\vb{\bra{H}} - \frac{1}{2•}(\vb{E}\cdot\vb{D}+\vb{H}\cdot\vb{B})I
+\end{split}
+\end{equation}
 
 \end{footnotesize}
 \end{multicols}
