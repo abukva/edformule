@@ -9,22 +9,23 @@
 \usepackage{amssymb}
 \usepackage{epstopdf}
 \usepackage{amsmath}
-\usepackage{physics}
+\usepackage{physics} % ovo je potrebno instalirati ako zelite da kompajlirate ovo
+\usepackage{tensor}
 
 \usepackage{textcomp}
 \usepackage{fancyhdr}
 \usepackage{hyperref}
 \hypersetup{
-    pdftitle={Formule iz elektrodinamike},    % title
-    pdfauthor={Bukva Aleksandar},     % author
-    pdfsubject={Formule iz elektrodinamike},   % subject of the document
-    pdfcreator={pdftex},   % creator of the document
-    pdfproducer={Texmaker}, % producer of the document
-    colorlinks=true,       % false: boxed links; true: colored links
-    linkcolor=red,          % color of internal links
-    citecolor=red,        % color of links to bibliography
-    filecolor=red,      % color of file links
-    urlcolor=red           % color of external links
+    pdftitle={Formule iz elektrodinamike},    
+    pdfauthor={Bukva Aleksandar},    
+    pdfsubject={Formule iz elektrodinamike},   
+    pdfcreator={pdftex},   
+    pdfproducer={Texmaker}, 
+    colorlinks=true,       
+    linkcolor=red,         
+    citecolor=red,       
+    filecolor=red,     
+    urlcolor=red           
 }
 
 \usepackage{multicol}
@@ -64,7 +65,7 @@ is provided as is without warranty or representation about the accuracy, correct
 \end{equation}
 
 \begin{equation}
-\phi = \frac{1}{4 \pi \epsilon_0} \int_V \frac{\rho(\vb{r\prime})}{|\vb{r}-\vb{r\prime}|}\dd V\prime
+\phi = \frac{1}{4 \pi \epsilon_0} \int_V \frac{\rho(\vb{r'})}{|\vb{r}-\vb{r'}|}\dd V'
 \end{equation}
 
 \begin{equation}
@@ -72,7 +73,7 @@ is provided as is without warranty or representation about the accuracy, correct
 \end{equation}
 
 \begin{equation}
-\vb{E}(\vb{r}) = \frac{1}{4 \pi \epsilon_0} \int \frac{\rho(\vb{r}\prime)\dd[3]{r}\prime}{\abs{\vb{r}-\vb{r}\prime}}(\vb{r}-\vb{r}\prime)
+\vb{E}(\vb{r}) = \frac{1}{4 \pi \epsilon_0} \int \frac{\rho(\vb{r}')\dd[3]{r}'}{\abs{\vb{r}-\vb{r}'}}(\vb{r}-\vb{r}')
 \end{equation}
 
 \begin{equation}
@@ -91,7 +92,7 @@ is provided as is without warranty or representation about the accuracy, correct
 \end{equation}
 
 \begin{equation}
-\vb{A}(\vb{r}) = \frac{\mu_0}{4\pi} \int \frac{\vb{j}(\vb{r\prime})}{|\vb{r}-\vb{r\prime}|}\dd V\prime
+\vb{A}(\vb{r}) = \frac{\mu_0}{4\pi} \int \frac{\vb{j}(\vb{r'})}{|\vb{r}-\vb{r'}|}\dd V'
 \end{equation}
 
 \begin{equation}
@@ -103,11 +104,11 @@ is provided as is without warranty or representation about the accuracy, correct
 \end{equation}
 
 \begin{equation}
-\vb{B}(\vb{r}) = \curl \vb{A} = \frac{\mu_0}{4\pi} \int \frac{\vb{j}(\vb{r\prime})\times (\vb{r}-\vb{r\prime})}{|\vb{r}-\vb{r\prime}|^3} \dd V\prime
+\vb{B}(\vb{r}) = \curl \vb{A} = \frac{\mu_0}{4\pi} \int \frac{\vb{j}(\vb{r'})\times (\vb{r}-\vb{r'})}{|\vb{r}-\vb{r'}|^3} \dd V'
 \end{equation}
 
 \begin{equation}
-\vb{E} = \pdv{\vb{A}}{t} - \gradient \phi
+\vb{E} = -\pdv{\vb{A}}{t} - \gradient \phi
 \end{equation}
 
 \begin{equation}
@@ -185,7 +186,90 @@ q = U C = U \epsilon_0 \frac{S}{d}
 \begin{equation}
 \begin{split}
 \frac{d}{dt}\left[\sum_{\alpha} \vb{p}_{\alpha} + \int \dd[3]{r} (\vb{D} \times \vb{B}) \right] \\ - \frac{1}{2•}\int \dd[3]{r}(\epsilon_0 \vb{E}^2 \gradient \epsilon_r + \mu_0\vb{H}^2 \gradient \mu_r) = \oint_S \hat{T}d\vb{S} \\
-\hat{T} = \vb{\ket{E}}\vb{\bra{D}} + \vb{\ket{B}}\vb{\bra{H}} - \frac{1}{2•}(\vb{E}\cdot\vb{D}+\vb{H}\cdot\vb{B})I
+\hat{T} = \dyad{\vb{E}}{\vb{D}} + \dyad{\vb{H}}{\vb{B}} - \frac{1}{2•}(\vb{E}\cdot\vb{D}+\vb{H}\cdot\vb{B})\hat{I}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\vb{E'}_{\parallel} &= \vb{R}_{\parallel} \\
+\vb{E'}_{\perp} &= \frac{\vb{E}_{\perp}+\vb{v}\cross\vb{B}_{\perp}}{\sqrt{1-\frac{v^2}{c^2}}} \\
+\vb{B'}_{\parallel} &= \vb{B}_{\parallel} \\
+\vb{B'}_{\perp} &= \frac{\vb{B}_{\perp} - \frac{1}{c}\vb{v}\cross\vb{E}_{\perp}}{\sqrt{1-\frac{v^2}{c^2}}}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\vb{E'} &= \gamma(\vb{E} + \vb{v}\cross\vb{B}) - \frac{\gamma^2}{c^2(1+\gamma)}(\vb{v}\vdot\vb{E})\vb{v} \\
+\vb{B'} &= \gamma(\vb{E} + \frac{1}{c^2}\vb{v}\cross\vb{B}) - \frac{\gamma^2}{c^2(1+\gamma)}(\vb{v}\vdot\vb{B})\vb{v}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\mqty(x'^0 \\ x'^1 \\ x'^2 \\ x'^3) = \underbrace{\mqty(\gamma&-\beta\gamma&0&0 \\ -\beta\gamma&\gamma&0&0 \\ 0&0&1&0 \\ 0&0&0&1)}_{\Lambda\indices{^\mu_\nu}}\mqty(x^0 \\ x^1 \\ x^2 \\ x^3)
+\end{equation}
+
+\begin{equation}
+g_{\mu\nu} = \mqty(\dmat[0]{1,-1,-1,-1})
+\end{equation}
+
+\begin{equation}
+\pdv{x\indices{^\mu}} = \left(\frac{1}{c}\pdv{t}, \gradient \right)
+\end{equation}
+
+\begin{equation}
+j\indices{^\mu} = (c\rho, \vb{j} = \rho \vb{v})
+\end{equation}
+
+\begin{equation}
+A\indices{^\mu} = (\frac{\phi}{c}, \vb{A})
+\end{equation}
+
+\begin{equation}
+\Box A\indices{^\mu} = \mu_0 j\indices{^\mu}
+\end{equation}
+
+\begin{equation}
+F\indices{^{\mu\nu}} = \partial\indices{^\mu}A\indices{^\nu} - \partial\indices{^\nu}A\indices{^\mu} 
+\end{equation}
+
+\begin{equation}
+F\indices{^{\mu\nu}} = \mqty(0&-\frac{E_x}{c}&-\frac{E_y}{c}&-\frac{E_z}{c} \\ \frac{E_x}{c}&0&-B_z&B_y \\ \frac{E_y}{c}&B_z&0&-B_x\\\frac{E_z}{c}&-B_y&B_x&0)
+\end{equation}
+
+\begin{equation}
+F\indices{^{'\mu\nu}} = (\Lambda F \Lambda^T)\indices{^{\mu\nu}}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\dv{\vb{p}}{t}&=q(\vb{E}+\vb{v}\cross\vb{B})\\
+\dv{t}\underbrace{\left(\frac{mc^2}{\sqrt{1-\frac{v^2}{c^2}}} \right)}_{E} &= \vb{v}\vdot\vb{F} = q\vb{v}\vdot\vb{E}
+\end{split}
+\end{equation}
+
+\begin{equation}
+E^2 = c^2p^2+m^2c^4
+\end{equation}
+
+\begin{equation}
+\dv{\tau}\left(\pdv{\tilde{L}}{u\indices{^\alpha}} \right) - \pdv{\tilde{L}}{x\indices{^\alpha}} = 0
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\pdv{u\indices{^\mu}}{u\indices{^\alpha}}&=\delta\indices{^\mu_\alpha} \\
+\pdv{u\indices{^\mu}}{u\indices{_\alpha}}&=g\indices{^{\mu\alpha}}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+S &= \int (-mc\dd s - qA\indices{^\mu}\dd x\indices{_\mu}) + S\indices{_f} \\
+\dd s &= \sqrt{g\indices{_{\mu\nu}}\dv{x\indices{^\mu}}{\tau}\dv{x\indices{^\nu}}{\tau}} \dd \tau \\
+\dd s &= c \dd \tau = c \sqrt{1-\frac{v^2}{c^2}}\dd t \\
+A\indices{^\mu}\dd x\indices{_\mu} &= (\phi - \vb{A}\vdot\vb{v})\dd t
 \end{split}
 \end{equation}
 
