@@ -191,11 +191,27 @@ q = U C = U \epsilon_0 \frac{S}{d}
 \end{equation}
 
 \begin{equation}
+V^{\mu} = \mqty(\frac{c}{\sqrt{1-\frac{v^2}{c^2}}}\\\frac{\vb{v}}{\sqrt{1-\frac{v^2}{c^2}}})
+\end{equation}
+
+\begin{equation}
+P^{\mu} = mV^{\mu} = \mqty(\frac{E}{c}\\\vb{p})
+\end{equation}
+
+\begin{equation}
+\mathcal{A}^\mu = \dv{V^{\mu}}{\tau} = \mqty(c\gamma\dv{\gamma}{t}\\\gamma\dv{\gamma}{t}\vb{v}+\gamma^2\vb{a})
+\end{equation}
+
+\begin{equation}
+\mathcal{F}^\mu = \mqty(\frac{\vb{v}\vdot\vb{F}}{c\sqrt{1-\frac{v^2}{c^2}}}\\\frac{\vb{F}}{\sqrt{1-\frac{v^2}{c^2}}})
+\end{equation}
+
+\begin{equation}
 \begin{split}
 \vb{E'}_{\parallel} &= \vb{R}_{\parallel} \\
 \vb{E'}_{\perp} &= \frac{\vb{E}_{\perp}+\vb{v}\cross\vb{B}_{\perp}}{\sqrt{1-\frac{v^2}{c^2}}} \\
 \vb{B'}_{\parallel} &= \vb{B}_{\parallel} \\
-\vb{B'}_{\perp} &= \frac{\vb{B}_{\perp} - \frac{1}{c}\vb{v}\cross\vb{E}_{\perp}}{\sqrt{1-\frac{v^2}{c^2}}}
+\vb{B'}_{\perp} &= \frac{\vb{B}_{\perp} - \frac{1}{c^2}\vb{v}\cross\vb{E}_{\perp}}{\sqrt{1-\frac{v^2}{c^2}}}
 \end{split}
 \end{equation}
 
