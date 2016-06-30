@@ -1,9 +1,13 @@
 %&LaTeX
 \documentclass[11pt,twoside]{article}
-\usepackage[left=0.25in,right=0.25in,top=0.25in,bottom=0.25in]{geometry} 
-\geometry{paperwidth=10.625in,paperheight=13.75in}  
-\setlength{\paperheight}{13.75in}
-\setlength{\paperwidth}{10.625in}
+%\usepackage[left=0.25in,right=0.25in,top=0.25in,bottom=0.6in]{geometry} 
+\usepackage[left=0.5cm,right=0.5cm,top=1cm,bottom=1.5cm]{geometry}
+%\geometry{paperwidth=10.625in,paperheight=13.75in}
+%\setlength{\paperheight}{13.75in}
+%\setlength{\paperwidth}{10.625in}
+\geometry{paperwidth=210mm,paperheight=297mm}
+\setlength{\paperheight}{297mm}
+\setlength{\paperwidth}{210mm}
               
 \usepackage{graphicx}
 \usepackage{amssymb}
@@ -11,6 +15,8 @@
 \usepackage{amsmath}
 \usepackage{physics} % ovo je potrebno instalirati ako zelite da kompajlirate ovo
 \usepackage{tensor}
+
+
 
 \usepackage{textcomp}
 \usepackage{fancyhdr}
@@ -33,21 +39,20 @@
 \date{}
 
 \begin{document}
-
+\thispagestyle{empty}
 \begin{center}
-Formule za elektrodinamiku \footnote{\textcopyleft \ 2016. By Aleksandar Bukva, last revised \today.}
+Formule za elektrodinamiku
 \end{center}
-\normalsize
 \begin{multicols}{3}
 
-\begin{footnotesize}
-
+%\begin{footnotesize}
+\tiny
 \begin{equation}
 \rho(\vb{r}) = \sum_\alpha q_a \delta^{(3)}(\vb{r}-\vb{r_\alpha})
 \end{equation}
 
 \begin{equation}
-\div\vec{j} + \frac{\partial \rho}{\partial t} = 0
+\div\vb{j} + \frac{\partial \rho}{\partial t} = 0
 \end{equation}
 
 \begin{equation}
@@ -71,7 +76,11 @@ Formule za elektrodinamiku \footnote{\textcopyleft \ 2016. By Aleksandar Bukva, 
 \end{equation}
 
 \begin{equation}
-\vb{E}(\vb{r}) = \frac{1}{4 \pi \epsilon_0} \int \frac{\rho(\vb{r}')\dd[3]{r}'}{\abs{\vb{r}-\vb{r}'}}(\vb{r}-\vb{r}')
+\vb{E} = \frac{1}{4\pi\epsilon_0} \left(\frac{3(\vb{p}\cdot\vb{r})\vb{r}-r^2\vb{p}}{r^5}-\frac{4\pi}{3}\vb{p}\delta^{(3)}(\vb{r})\right)
+\end{equation}
+
+\begin{equation}
+\vb{E}(\vb{r}) = \frac{1}{4 \pi \epsilon_0} \int \frac{\rho(\vb{r}')\dd[3]{r}'}{\abs{\vb{r}-\vb{r}'}^3}(\vb{r}-\vb{r}')
 \end{equation}
 
 \begin{equation}
@@ -95,6 +104,10 @@ Formule za elektrodinamiku \footnote{\textcopyleft \ 2016. By Aleksandar Bukva, 
 
 \begin{equation}
 \vb{A}(\vb{r}) = \frac{\mu_0}{4\pi} \frac{\vb{m}\times\vb{r}}{r^3}
+\end{equation}
+
+\begin{equation}
+\vb{B} = \frac{\mu_0}{4\pi} \left(\frac{3(\vb{m}\cdot\vb{r})\vb{r}-r^2\vb{m}}{r^5} + \frac{8\pi}{3}\vb{m}\delta^{(3)}(\vb{r})\right)
 \end{equation}
 
 \begin{equation}
@@ -135,8 +148,8 @@ M_{2t} - M_{1t} &= \vb{i}_{vez} \times \vb{n}
 
 \begin{equation}
 \begin{split}
-\div\vec{E} &= \frac{\rho}{\epsilon_0} \\
-\div\vec{B} &= 0 \\
+\div\vb{E} &= \frac{\rho}{\epsilon_0} \\
+\div\vb{B} &= 0 \\
 \curl \vb{E} &= -\frac{\partial\vb{B}}{\partial t} \\
 \curl \vb{B} &= \mu_0 \left( \vb{j} + \epsilon_0 \frac{\partial\vb{E}}{\partial t} \right)
 \end{split}
@@ -144,11 +157,15 @@ M_{2t} - M_{1t} &= \vb{i}_{vez} \times \vb{n}
 
 \begin{equation}
 \begin{split}
-\div\vec{D} &= \rho + \rho_{ext} \\
-\div\vec{B} &= 0 \\
+\div\vb{D} &= \rho + \rho_{ext} \\
+\div\vb{B} &= 0 \\
 \curl \vb{E} &= - \frac{\partial B}{\partial t} \\
 \curl \vb{H} &= \vb{j} + \vb{j}_{ext} + \frac{\partial D}{\partial t}
 \end{split}
+\end{equation}
+
+\begin{equation}
+\div{\vb{P}}=-\rho_{\text{vez}}
 \end{equation}
 
 \begin{equation}
@@ -170,7 +187,10 @@ q = U C = U \epsilon_0 \frac{S}{d}
 \end{equation}
 
 \begin{equation}
-\vb{L} = \int \vb{r} \times \vb{g} \dd V
+\begin{split}
+\dv{t}\left(\vb{L}_{\text{meh}} + \int_V \dd[3]{r} (\vb{r}\cross\vb{g})\right) &= \oint_{\partial V}(\vb{r}\cross \hat{T}\dd{\vb{S}}) \\
+\vb{L}_f &= \epsilon_0 \int_V \dd[3]{r} (\vb{r}\cross(\vb{E}\cross\vb{B}))
+\end{split}
 \end{equation}
 
 \begin{equation}
@@ -198,19 +218,17 @@ P^{\mu} = mV^{\mu} = \mqty(\frac{E}{c}\\\vb{p})
 
 \begin{equation}
 \begin{split}
-\vb{E'}_{\parallel} &= \vb{E}_{\parallel} \\
-\vb{E'}_{\perp} &= \frac{\vb{E}_{\perp}+\vb{v}\cross\vb{B}_{\perp}}{\sqrt{1-\frac{v^2}{c^2}}} \\
-\vb{B'}_{\parallel} &= \vb{B}_{\parallel} \\
-\vb{B'}_{\perp} &= \frac{\vb{B}_{\perp} - \frac{1}{c^2}\vb{v}\cross\vb{E}_{\perp}}{\sqrt{1-\frac{v^2}{c^2}}}
+\vb{E'}_{\parallel} &= \vb{E}_{\parallel} \quad \vb{E'}_{\perp} = \frac{\vb{E}_{\perp}+\vb{v}\cross\vb{B}_{\perp}}{\sqrt{1-\frac{v^2}{c^2}}} \\
+\vb{B'}_{\parallel} &= \vb{B}_{\parallel}  \quad \vb{B'}_{\perp} = \frac{\vb{B}_{\perp} - \frac{1}{c^2}\vb{v}\cross\vb{E}_{\perp}}{\sqrt{1-\frac{v^2}{c^2}}}
 \end{split}
 \end{equation}
 
-\begin{equation}
-\begin{split}
-\vb{E'} &= \gamma(\vb{E} + \vb{v}\cross\vb{B}) - \frac{\gamma^2}{c^2(1+\gamma)}(\vb{v}\vdot\vb{E})\vb{v} \\
-\vb{B'} &= \gamma(\vb{B} - \frac{1}{c^2}\vb{v}\cross\vb{E}) - \frac{\gamma^2}{c^2(1+\gamma)}(\vb{v}\vdot\vb{B})\vb{v}
-\end{split}
-\end{equation}
+%\begin{equation}
+%\begin{split}
+%\vb{E'} &= \gamma(\vb{E} + \vb{v}\cross\vb{B}) - \frac{\gamma^2}{c^2(1+\gamma)}(\vb{v}\vdot\vb{E})\vb{v} \\
+%\vb{B'} &= \gamma(\vb{B} - \frac{1}{c^2}\vb{v}\cross\vb{E}) - \frac{\gamma^2}{c^2(1+\gamma)}(\vb{v}\vdot\vb{B})\vb{v}
+%\end{split}
+%\end{equation}
 
 \begin{equation}
 \mqty(x'^0 \\ x'^1 \\ x'^2 \\ x'^3) = \underbrace{\mqty(\gamma&-\beta\gamma&0&0 \\ -\beta\gamma&\gamma&0&0 \\ 0&0&1&0 \\ 0&0&0&1)}_{\Lambda\indices{^\mu_\nu}}\mqty(x^0 \\ x^1 \\ x^2 \\ x^3)
@@ -264,6 +282,10 @@ E^2 = c^2p^2+m^2c^4
 \end{equation}
 
 \begin{equation}
+H=p_i\dot{q}_i-L
+\end{equation}
+
+\begin{equation}
 \begin{split}
 \pdv{u\indices{^\mu}}{u\indices{^\alpha}}&=\delta\indices{^\mu_\alpha} \\
 \pdv{u\indices{^\mu}}{u\indices{_\alpha}}&=g\indices{^{\mu\alpha}}
@@ -279,14 +301,29 @@ A\indices{^\mu}\dd x\indices{_\mu} &= (\phi - \vb{A}\vdot\vb{v})\dd t
 \end{split}
 \end{equation}
 
-%\columnbreak
+\begin{equation}
+j_{\text{vez}}^\mu = (c\rho_{\text{vez}},\vb{j}_{\text{vez}}) = (-c\div{\vb{P}},\curl{\vb{M}}+\pdv{\vb{P}}{t})
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\vb{P}'_\parallel = \vb{P}_\parallel \quad \vb{P}'_\perp = \frac{\vb{P}_\perp - \frac{1}{c^2}\vb{v}\cross\vb{M}}{\sqrt{1-\frac{v^2}{c^2}}} \\
+\vb{M}'_\parallel = \vb{M}_\parallel \quad \vb{M}'_\perp = \frac{\vb{M}_\perp - \vb{v}\cross\vb{P}}{\sqrt{1-\frac{v^2}{c^2}}}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\vb{D}'_\parallel = \vb{D}_\parallel \quad \vb{D}'_\perp = \frac{\vb{D}_\perp - \frac{1}{c^2}\vb{v}\cross\vb{H}}{\sqrt{1-\frac{v^2}{c^2}}} \\
+\vb{H}'_\parallel = \vb{H}_\parallel \quad \vb{H}'_\perp = \frac{\vb{H}_\perp - \vb{v}\cross\vb{D}}{\sqrt{1-\frac{v^2}{c^2}}}
+\end{split}
+\end{equation}
 
 \begin{equation}
 \begin{split}
 \sin(\alpha\pm\beta)&=\sin\alpha\cos\beta\pm\cos\alpha\sin\beta \\
 \cos(\alpha\pm\beta)&=\cos\alpha\cos\beta\mp\sin\alpha\sin\beta \\
-\tan(\alpha\pm\beta)&=\frac{\tan\alpha\pm\tan\beta}{1-\tan\alpha\tan\beta} \\
-\cot(\alpha\pm\beta)&=\frac{\cot\alpha\cot\beta-1}{\cot\beta\pm\cot\alpha}
+\tan(\alpha\pm\beta)&=\frac{\tan\alpha\pm\tan\beta}{1\mp\tan\alpha\tan\beta}
 \end{split}
 \end{equation}
 
@@ -311,7 +348,7 @@ A\indices{^\mu}\dd x\indices{_\mu} &= (\phi - \vb{A}\vdot\vb{v})\dd t
 \sin\alpha\sin\beta &= -\frac{1}{2}(\cos(\alpha+\beta)+\cos(\alpha-\beta))
 \end{split}
 \end{equation}
-
+\columnbreak
 \begin{equation}
 \begin{split}
 \sin\frac{\alpha}{2}&=\pm\sqrt{\frac{1-\cos\alpha}{2}} \\
@@ -320,6 +357,121 @@ A\indices{^\mu}\dd x\indices{_\mu} &= (\phi - \vb{A}\vdot\vb{v})\dd t
 \end{split}
 \end{equation}
 
-\end{footnotesize}
+\begin{equation}
+\begin{split}
+\sin(\acos(x)) &= \cos(\asin(x))= \sqrt{1-x^2} \\
+\sin(\atan(x)) &= \frac{x}{\sqrt{1+x^2}} \\
+\cos(\atan(x)) &= \frac{1}{\sqrt{1+x^2}} \\
+\tan(\asin(x)) &= \cot(\acos(x))= \frac{x}{\sqrt{1-x^2}} \\
+\tan(\acos(x)) &= \cot(\asin(x)) = \frac{\sqrt{1-x^2}}{x}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\int_0^b \sin\frac{k \pi y}{b}\sin \frac{m \pi y}{b} = \frac{b}{2} \delta_{km}
+\end{equation}
+
+\begin{equation}
+\phi(r,\theta) = \sum_{l=0}^{\infty} \left (A_l r^l + \frac{B_l}{r^{l+1}} \right)P_l(\cos\theta)
+\end{equation}
+
+\begin{equation}
+\begin{split}
+V(\vb{r})=\int_V G(\vb{r},\vb{r'})\rho(\vb{r'})\dd V' + \\ \epsilon_0 \oint_{\partial V} \dd S' \left (G(\vb{r},\vb{r'})\pdv{V(\vb{r'})}{n'} - V(\vb{r'})\pdv{G(\vb{r},\vb{r'})}{n'} \right )
+\end{split}
+\end{equation}
+
+\begin{equation}
+\vb{D} = \epsilon_0\vb{E} + \vb{P}
+\end{equation}
+
+\begin{equation}
+\vb{P} = \epsilon_0 (\hat{\epsilon} -1)\vb{E} = \epsilon_0 \hat{\chi}_e \vb{E}
+\end{equation}
+
+\begin{equation}
+(1+x)^\alpha = \sum_{n=0}^{\infty} \binom{\alpha}{n}x^n, |x|<1
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\int_V \dd V (\phi \laplacian \psi - \psi \laplacian \phi) = \oint_{\partial V} \dd \vb{S}(\phi \grad \psi - \psi \grad \phi)
+\end{split}
+\end{equation}
+
+\begin{equation}
+\Delta \ln r = 2\pi \delta(r)
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\vb{p} &= \beta \vb{E} \\
+\vb{p} &= -e\vb{r}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\omega = \frac{q}{2m}\vb{B_{sp}}
+\end{equation}
+
+\begin{equation}
+W=\frac{1}{2}I_1I_2M_{1,2} = \frac{1}{2}I_1I_2 \underbrace{\int \frac{\dd \vb{l_1} \dd \vb{l_2}}{|\vb{r_1} - \vb{r_2}|} \frac{\mu_0}{4\pi}}_{M_{1,2}}
+\end{equation}
+
+\begin{equation}
+W_{int}=q\phi
+\end{equation}
+
+\begin{equation}
+\expval{X} = \frac{\int X e^{-\frac{W_{int}}{kT}}\dd V}{\int e^{-\frac{W_{int}}{kT}}\dd V}
+\end{equation}
+
+\begin{equation}
+W_{\text{int}} = Q\phi(0)-\vb{p}\cdot \vb{E}(0)+\dots
+\end{equation}
+
+\begin{equation}
+\vb{F} = Q\vb{E}(0)+(\vb{p}\cdot\nabla)\vb{E}(0)+\dots
+\end{equation}
+
+\begin{equation}
+\vb{M} = \vb{p}\cross\vb{E}(0)+\dots
+\end{equation}
+
+\begin{equation}
+W_{\text{int}} = \vb{m}\cdot\vb{B}(0)+\dots
+\end{equation}
+
+\begin{equation}
+\vb{F}=(\vb{m}\cdot\nabla)\vb{B}\bigg|_0
+\end{equation}
+
+\begin{equation}
+I=\frac{1}{4\pi\epsilon_0}\left(\abs{\ddot{\vb{p}}(\tau)}^2\frac{2}{3c^2} + \frac{2}{3c^5}\abs{\ddot{\vb{m}}(\tau)}^2+\frac{1}{180 c^5}\abs{\dddot{D}(\tau)}^2\right)
+\end{equation}
+
+\begin{eqnarray}
+\dv{I}{\Omega} = \frac{1}{(4\pi)^2\epsilon_0 c^3}\left[\ddot{\vb{p}}(\tau)\cross\vb{n} + \frac{1}{c}(\ddot{\vb{m}}(\tau)\cross\vb{n})\cross\vb{n} \right. \\ \left. +\frac{1}{6c}\dddot{D}(\tau)\vb{n}\cross\vb{n}\right]^2
+\end{eqnarray}
+
+\begin{equation}
+\underbrace{\dv{\epsilon}{t}}_{\text{izra\v cena}} = \frac{1}{6\pi\epsilon_0 c^3} \frac{e^2}{m^2}\frac{\vb{F}^2-\frac{1}{c^2}(\vb{F}\cdot\vb{v})^2}{1-\frac{v^2}{c^2}}
+\end{equation}
+
+\begin{equation}
+\hat{\epsilon}_r= \hat{I} + \frac{N}{\epsilon_0}\hat{\beta}
+\end{equation}
+
+\begin{equation}
+v_f = c \sqrt{\frac{\sin^2 \theta}{\epsilon_\parallel} + \frac{\cos^2 \theta}{\epsilon_\perp}}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\epsilon'(\omega)-1&=\frac{1}{\pi}P\int_{-\infty}^{\infty}\dd x \frac{\epsilon''(x)}{x-\omega} \\
+\epsilon''(\omega) &= -\frac{1}{\pi} P \int_{-\infty}^{\infty}\dd x \frac{\epsilon'(x)_1}{x-\omega}
+\end{split}
+\end{equation}
+%\end{footnotesize}
 \end{multicols}
 \end{document}  
